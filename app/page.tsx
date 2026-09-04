@@ -1,47 +1,6 @@
-export default function Page() {
-  return (
-    <main
-      style={{
-        colorScheme: 'light dark',
-        position: 'relative',
-        display: 'flex',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'light-dark(#fff, #000)',
-        color: 'light-dark(#000, #fff)',
-      }}
-    >
-      <svg
-        aria-hidden="true"
-        style={{ width: 80, height: 80 }}
-        width={80}
-        height={80}
-        fill="none"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      >
-        <path
-          d="M14.2 14.2H17V6.9375C17 4.76288 15.2371 3 13.0625 3H5.8V5.8M14.2 14.2V7.79063L7.79062 14.2H14.2ZM14.2 14.2V17H6.9375C4.76288 17 3 15.2371 3 13.0625V5.8H5.8M5.8 5.8V12.2313L12.2313 5.8H5.8Z"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <p
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: 'calc(50% + 56px)',
-          transform: 'translateX(-50%)',
-          whiteSpace: 'nowrap',
-          fontSize: '14px',
-          fontWeight: 500,
-          color: 'light-dark(#71717a, #a1a1aa)',
-        }}
-      >
-        Your v0 generation will show here.
-      </p>
-    </main>
-  )
-}
+import Link from 'next/link'
+import { ArrowRight, BarChart3, Layers3, Zap } from 'lucide-react'
+import { asset, metrics } from '@/lib/a2z-data'
+import { Eyebrow, SectionTitle, Shell, Stat, TrustRow } from '@/components/a2z-site'
+
+export default function Page() { return <Shell><section className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 pt-16 lg:grid-cols-[1.1fr_.9fr] lg:items-center lg:px-8 lg:pb-24 lg:pt-24"><div><Eyebrow>Digital asset acquisition brief</Eyebrow><h1 className="max-w-3xl text-balance text-5xl font-semibold tracking-[-0.04em] sm:text-6xl lg:text-7xl">The utility layer for the modern web.</h1><p className="mt-6 max-w-xl text-pretty text-lg leading-8 text-muted-foreground">A2Z Edit is a polished, multi-platform toolkit with 90+ browser-based utilities, built to capture high-intent search and convert everyday file tasks into a scalable product.</p><div className="mt-8 flex flex-wrap gap-3"><Link href="/deal-room" className="inline-flex items-center rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground">Enter the deal room <ArrowRight className="ml-2 size-4"/></Link><Link href="/metrics" className="inline-flex items-center rounded-lg border border-border px-5 py-3 text-sm font-medium hover:bg-secondary">Review traction</Link></div><div className="mt-10"><TrustRow/></div></div><div className="relative rounded-2xl border border-border bg-secondary/50 p-5 shadow-sm"><div className="rounded-xl border border-border bg-background p-5"><div className="flex items-center justify-between border-b border-border pb-4"><div><p className="text-xs text-muted-foreground">A2Z Edit / acquisition snapshot</p><p className="mt-1 font-semibold">A growing SEO surface</p></div><span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">Live product</span></div><div className="grid grid-cols-2 gap-5 py-6">{metrics.map(m => <Stat key={m.label} label={m.label} value={m.value} note={m.note}/>)}</div><div className="rounded-lg bg-secondary p-4"><div className="flex items-center gap-3"><div className="grid size-9 place-items-center rounded-lg bg-primary text-primary-foreground"><BarChart3 className="size-4"/></div><div><p className="text-sm font-medium">Strong early signal</p><p className="text-xs text-muted-foreground">10 days of observed traffic</p></div></div></div></div></div></section><section className="border-y border-border bg-secondary/30"><div className="mx-auto grid max-w-7xl gap-8 px-5 py-12 sm:grid-cols-3 lg:px-8">{[['90+', 'browser tools', Layers3], ['100/100', 'Lighthouse score', Zap], ['2 years', 'domain prepaid', BarChart3]].map(([value, label, Icon]) => <div key={label as string} className="flex items-center gap-4"><div className="grid size-10 place-items-center rounded-lg border border-border bg-background text-primary"><Icon className="size-5"/></div><div><p className="text-2xl font-semibold">{value as string}</p><p className="text-sm text-muted-foreground">{label as string}</p></div></div>)}</div></section><section className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-24"><SectionTitle title="Built for leverage">A content-rich foundation with several clear paths to revenue.</SectionTitle><div className="grid gap-5 md:grid-cols-3">{[['Search-ready by default','268 pages of content and first-page rankings create a strong organic acquisition surface.'],['One product, many entry points','Image, PDF, OCR and utility workflows make the toolkit useful across multiple audiences.'],['Ready for the next operator','Clean handover, low fixed costs and two months of technical support reduce transition risk.']].map(([title, text], i) => <div key={title} className="rounded-xl border border-border p-6"><p className="mb-8 text-sm text-primary">0{i + 1}</p><h3 className="text-lg font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p></div>)}</div></section></Shell> }
